@@ -5,5 +5,5 @@ export const environment = {
      * 'backend' es el nombre que le dimos al servicio de FastAPI
      * en el archivo 'docker-compose.yml'.
      */
-    apiUrl: 'http://backend:8000'
+    apiUrl: 'https://mi-api-sentimientos.onrender.com'
 };
