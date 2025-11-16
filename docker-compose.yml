@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  
+  # --- Servicio del Backend (FastAPI) ---
+  backend:
+    build: ./backend  # Le dice dónde está su Dockerfile
+    container_name: api-sentimientos-backend
+    ports:
+      - "8000:8000" # Mapea tu PC:Contenedor
+    # 'command' es opcional si tu Dockerfile ya tiene un CMD
+    # command: uvicorn main:app --host 0.0.0.0 --port 8000
+
+  # --- Servicio del Frontend (Angular + NGINX) ---
+  frontend:
+    build: ./frontend # Le dice dónde está su Dockerfile
+    container_name: app-sentimientos-frontend
+    ports:
+      - "8080:80" # Mapea el puerto 8080 de tu PC al 80 del NGINX
+    # Se asegura de que el frontend no arranque HASTA que
+    # el backend esté listo (aunque esto no es 100% garantizado)
+    depends_on:
+      - backend

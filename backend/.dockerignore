@@ -1,0 +1,21 @@
+# Excluir archivos que no necesitamos en la imagen final
+# Esto hace que la compilación (build) sea más rápida y la imagen más limpia
+# Entorno virtual local (si tienes uno)
+venv/
+.venv/
+
+# Archivos de caché de Python
+pycache/
+*.pyc
+*.pyo
+
+# Archivos de configuración de IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+
+# Archivos de caché de Jupyter (por si acaso)
+.ipynb_checkpoints/

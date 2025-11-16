@@ -1,0 +1,57 @@
+<header class="text-center mb-10">
+    <h1 class="text-3xl font-bold text-gray-200">
+        Dashboard de Reseñas
+    </h1>
+    <p class="text-lg text-gray-400">
+        Análisis general del dataset de prueba (20,000 reseñas).
+    </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-2xl">
+        <h2 class="text-xl font-semibold text-white mb-4">
+        Proporción de Sentimientos
+        </h2>
+        <div class="h-96 w-full">
+        @if (isLoadingProportion()) {
+            <p class="text-gray-400 text-center pt-20">Cargando gráfico...</p>
+        } @else {
+            <ngx-charts-pie-chart
+            [results]="proportionData()"
+            [labels]="true"
+            [doughnut]="true"
+            [arcWidth]="0.25"
+            [scheme]="pieColorScheme"
+            [legend]="true"
+            [legendPosition]="legendPositionBelow"
+            >
+            </ngx-charts-pie-chart>
+        }
+        </div>
+    </div>
+
+    <div class="bg-gray-800 p-6 rounded-2xl shadow-2xl">
+        <h2 class="text-xl font-semibold text-white mb-4">
+        Palabras Clave (Top 20)
+        </h2>
+        <div class="h-96 w-full">
+        @if (isLoadingKeywords()) {
+            <p class="text-gray-400 text-center pt-20">Cargando palabras...</p>
+        } @else {
+            <ngx-charts-bar-vertical
+            [results]="keywordsData()"
+            [scheme]="barColorScheme"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="false"
+            [showGridLines]="false"
+            [trimXAxisTicks]="true"
+            [animations]="true"
+            >
+            </ngx-charts-bar-vertical>
+        }
+        </div>
+    </div>
+
+</div>
